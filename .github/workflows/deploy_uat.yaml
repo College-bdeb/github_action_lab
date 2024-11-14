@@ -16,6 +16,6 @@ jobs:
       - name: Deploy to GitHub Pages (UAT)  # Étape de déploiement vers GitHub Pages
         uses: peaceiris/actions-gh-pages@v3  # Action de déploiement pour GitHub Pages
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Utilise le token GitHub pour autoriser le déploiement
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token GitHub pour autoriser le déploiement
           publish_dir: ./  # Spécifie le dossier de publication, ici la racine du dépôt
           destination_dir: uat  # Déploie les fichiers dans le dossier `/uat` sur la branche `gh-pages`
