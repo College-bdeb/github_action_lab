@@ -1,0 +1,21 @@
+name: Deploy UAT Environment  # Nom du workflow pour le test utilisateur (UAT)
+
+on:
+  push:
+    branches:
+      - uat  # Déclenchement du workflow lorsque des changements sont poussés vers la branche uat
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Spécifie l’environnement de la machine virtuelle pour exécuter les jobs
+
+    steps:
+      - name: Checkout code  # Étape de vérification du code source
+        uses: actions/checkout@v2  # Action pour cloner le dépôt
+
+      - name: Deploy to GitHub Pages (UAT)  # Étape de déploiement vers GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3  # Action de déploiement pour GitHub Pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token GitHub pour autoriser le déploiement
+          publish_dir: ./  # Spécifie le dossier de publication, ici la racine du dépôt
+          destination_dir: uat  # Déploie les fichiers dans le dossier `/uat` sur la branche `gh-pages`
